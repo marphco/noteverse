@@ -1,6 +1,6 @@
 import { openDB } from 'idb';
 
-const initdb = async () =>
+const initdb = async () => {
   openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
@@ -11,29 +11,36 @@ const initdb = async () =>
       console.log('jate database created');
     },
   });
-
-// TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (id, content) => {
-  console.log('PUT to the database');
-  const jateDb = await openDB('jate', 1);
-  const tx = jateDb.transaction('jate', 'readwrite');
-  const store = tx.objectStore('jate');
-  const request = store.put({ id: id, content: content });
-  const result = await request;
-  console.log('🚀 - data saved to the database', result);
 };
 
-// TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => {
-  console.log('GET all from the database');
-  const jateDb = await openDB('jate', 1);
-  const tx = jateDb.transaction('jate', 'readonly');
+export const putDb = async (content) => {
+  console.log('putDb: Storing content in the database');
+  const db = await openDB('jate', 1);
+  const tx = db.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.getAll();
-  const result = await request;
-  console.log('result.value', result);
-  return result;
-}
- 
+
+  const allItems = await store.getAll();
+
+  if (allItems.length > 0) {
+    await store.put({ id: 1, content });
+  } else {
+    await store.put({ id: 1, content });
+  }
+
+  await tx.complete;
+  console.log('putDb: Content stored or updated');
+};
+
+export const getDb = async () => {
+  console.log('getDb: Retrieving content from the database');
+  const db = await openDB('jate', 1);
+  const tx = db.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
+
+  const item = await store.get(1);
+  await tx.complete;
+
+  return item ? item.content : '';
+};
 
 initdb();
