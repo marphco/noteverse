@@ -61,12 +61,8 @@ typings/
 .next
 
 # lock files
-package-lock.json
 yarn.lock
 
 .DS_Store
 .vscode
 *.xslx
-
-# Ignore the .vscode folder
-.vscode/
