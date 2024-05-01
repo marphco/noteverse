@@ -23,7 +23,7 @@ NoteVerse is a single-page text editor application built to meet Progressive Web
 - [Questions](#questions)
 
 ## Usage
-To use NoteVerse, navigate to [this link](https://example.com/notes.html).
+To use NoteVerse, navigate to [this link](https://noteverse-92fca5237b29.herokuapp.com/).
 
 ## Mockup
 The following image shows the web application's layout:
