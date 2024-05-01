@@ -20,6 +20,7 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './index.html',
         inject: true,
+        favicon: path.resolve('favicon.ico'),
       }),
       new MiniCssExtractPlugin({
         filename: "styles/[name].css",
@@ -29,9 +30,9 @@ module.exports = () => {
         swDest: 'service-worker.js',
       }),
       new WebpackPwaManifest({
-        name: 'My App',
-        short_name: 'App',
-        description: 'My App Description',
+        name: 'NoteVerse',
+        short_name: 'NoteVerse',
+        description: 'NoteVerse is a Text Editor PWA',
         background_color: '#ffffff',
         crossorigin: 'use-credentials',
         filename: 'manifest.json',
