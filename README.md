@@ -28,7 +28,7 @@ To use NoteVerse, navigate to [this link](https://example.com/notes.html).
 ## Mockup
 The following image shows the web application's layout:
 
-![Desktop screen size visualization.](./client/src/images/NoteVerse-screenshot)
+![Desktop screen size visualization.](/client/src/images/NoteVerse-screenshot.png)
 
 ## License
 This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
